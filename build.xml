@@ -9,14 +9,14 @@
         </javac>
 
     </target>
-    <!--<target name="jar" depends="compile">-->
-        <!--<jar destfile="final.jar" filesetmanifest="skip">-->
-            <!--<zipgroupfileset dir="." includes="*.jar"/>-->
-            <!--<zipgroupfileset dir="./lib" includes="*.jar"/>-->
+    <target name="jar" depends="compile">
+        <jar destfile="final.jar" filesetmanifest="skip">
+            <zipgroupfileset dir="." includes="*.jar"/>
+            <zipgroupfileset dir="./lib" includes="*.jar"/>
 
-            <!--<manifest>-->
-                <!--<attribute name="Main-Class" value="src.Main"/>-->
-            <!--</manifest>-->
-        <!--</jar>-->
-    <!--</target>-->
+            <manifest>
+                <attribute name="Main-Class" value="Main"/>
+            </manifest>
+        </jar>
+    </target>
 </project>
