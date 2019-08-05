@@ -3,11 +3,18 @@
     <path id="classpath">
         <fileset dir="./lib" includes="**/*.jar"/>
     </path>
+    <path id="junit.class.path">
+        <pathelement location="lib/junit-4.10.jar" />
+        <pathelement location="." />
+    </path>
+
     <target name="compile">
         <javac srcdir="./src" destdir="./out">
             <classpath refid="classpath" />
         </javac>
-
+        <javac srcdir="./src" destdir="./out">
+            <classpath refid="junit.class.path" />
+        </javac>
     </target>
     <target name="jar" depends="compile">
         <jar destfile="final.jar" filesetmanifest="skip">
@@ -18,5 +25,15 @@
                 <attribute name="Main-Class" value="Main"/>
             </manifest>
         </jar>
+    </target>
+    <target name="test" depends="compile">
+        <junit printsummary="yes" haltonfailure="yes">
+            <classpath>
+                <path refid="junit.class.path" />
+                <fileset dir="./lib">
+                    <include name="**/junit.jar" />
+                </fileset>
+            </classpath>
+        </junit>
     </target>
 </project>
